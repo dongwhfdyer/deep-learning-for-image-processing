@@ -6,6 +6,7 @@ import os
 import time
 import glob
 import random
+
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -55,14 +56,14 @@ def main():
 
     # load train images list
     random.seed(0)
-    train_image_list = glob.glob(train_dir+"/*/*.jpg")
+    train_image_list = glob.glob(train_dir + "/*/*.jpg")
     random.shuffle(train_image_list)
     train_num = len(train_image_list)
     assert train_num > 0, "cannot find any .jpg file in {}".format(train_dir)
     train_label_list = [class_dict[path.split(os.path.sep)[-2]] for path in train_image_list]
 
     # load validation images list
-    val_image_list = glob.glob(validation_dir+"/*/*.jpg")
+    val_image_list = glob.glob(validation_dir + "/*/*.jpg")
     random.shuffle(val_image_list)
     val_num = len(val_image_list)
     assert val_num > 0, "cannot find any .jpg file in {}".format(validation_dir)
@@ -98,14 +99,14 @@ def main():
 
     # load train dataset
     train_dataset = tf.data.Dataset.from_tensor_slices((train_image_list, train_label_list))
-    train_dataset = train_dataset.shuffle(buffer_size=train_num)\
-                                 .map(process_train_img, num_parallel_calls=AUTOTUNE)\
-                                 .repeat().batch(batch_size).prefetch(AUTOTUNE)
+    train_dataset = train_dataset.shuffle(buffer_size=train_num) \
+        .map(process_train_img, num_parallel_calls=AUTOTUNE) \
+        .repeat().batch(batch_size).prefetch(AUTOTUNE)
 
     # load train dataset
     val_dataset = tf.data.Dataset.from_tensor_slices((val_image_list, val_label_list))
-    val_dataset = val_dataset.map(process_val_img, num_parallel_calls=tf.data.experimental.AUTOTUNE)\
-                             .repeat().batch(batch_size)
+    val_dataset = val_dataset.map(process_val_img, num_parallel_calls=tf.data.experimental.AUTOTUNE) \
+        .repeat().batch(batch_size)
 
     # 实例化模型
     feature = resnet50(num_classes=5, include_top=False)
@@ -156,22 +157,22 @@ def main():
     best_test_loss = float('inf')
     train_step_num = train_num // batch_size
     val_step_num = val_num // batch_size
-    for epoch in range(1, epochs+1):
-        train_loss.reset_states()        # clear history info
-        train_accuracy.reset_states()    # clear history info
-        test_loss.reset_states()         # clear history info
-        test_accuracy.reset_states()     # clear history info
+    for epoch in range(1, epochs + 1):
+        train_loss.reset_states()  # clear history info
+        train_accuracy.reset_states()  # clear history info
+        test_loss.reset_states()  # clear history info
+        test_accuracy.reset_states()  # clear history info
 
         t1 = time.perf_counter()
         for index, (images, labels) in enumerate(train_dataset):
             train_step(images, labels)
-            if index+1 == train_step_num:
+            if index + 1 == train_step_num:
                 break
-        print(time.perf_counter()-t1)
+        print(time.perf_counter() - t1)
 
         for index, (images, labels) in enumerate(val_dataset):
             test_step(images, labels)
-            if index+1 == val_step_num:
+            if index + 1 == val_step_num:
                 break
 
         template = 'Epoch {}, Loss: {}, Accuracy: {}, Test Loss: {}, Test Accuracy: {}'

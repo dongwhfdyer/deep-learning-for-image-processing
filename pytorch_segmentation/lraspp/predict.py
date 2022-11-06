@@ -34,7 +34,7 @@ def main():
     print("using {} device.".format(device))
 
     # create model
-    model = lraspp_mobilenetv3_large(num_classes=classes+1)
+    model = lraspp_mobilenetv3_large(num_classes=classes + 1)
 
     # load weights
     weights_dict = torch.load(weights_path, map_location='cpu')['model']

@@ -149,6 +149,3 @@ def resnet101(num_classes=1000, include_top=True):
     block = Bottleneck
     blocks_num = [3, 4, 23, 3]
     return ResNet(block, blocks_num, num_classes, include_top)
-
-
-

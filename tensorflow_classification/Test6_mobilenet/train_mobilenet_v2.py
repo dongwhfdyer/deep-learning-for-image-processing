@@ -68,7 +68,7 @@ def main():
     feature = MobileNetV2(include_top=False)
     # download weights 链接: https://pan.baidu.com/s/1YgFoIKHqooMrTQg_IqI2hA  密码: 2qht
     pre_weights_path = './pretrain_weights.ckpt'
-    assert len(glob.glob(pre_weights_path+"*")), "cannot find {}".format(pre_weights_path)
+    assert len(glob.glob(pre_weights_path + "*")), "cannot find {}".format(pre_weights_path)
     feature.load_weights(pre_weights_path)
     feature.trainable = False
     feature.summary()

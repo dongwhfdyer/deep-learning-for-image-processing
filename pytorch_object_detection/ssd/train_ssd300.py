@@ -90,7 +90,7 @@ def main(parser_data):
                                                   num_workers=nw,
                                                   collate_fn=train_dataset.collate_fn)
 
-    model = create_model(num_classes=args.num_classes+1)
+    model = create_model(num_classes=args.num_classes + 1)
     model.to(device)
 
     # define optimizer

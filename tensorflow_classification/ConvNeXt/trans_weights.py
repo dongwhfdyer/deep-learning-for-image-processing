@@ -146,4 +146,3 @@ if __name__ == '__main__':
     # main(weights_path="./convnext_large_22k_224.pth",
     #      model_name="convnext_large_22k_224",
     #      model=model)
-

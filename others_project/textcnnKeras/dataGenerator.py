@@ -51,4 +51,3 @@ def generatorInfo(batch_size, seq_length, num_classes, file_name):
         batch_X = data_X[selected_index]  # 随机抽取的文本信息（数字化序列）
         batch_Y = data_Y[selected_index]  # 随机抽取的标签信息（one-hot编码）
         yield (batch_X, batch_Y)
-

@@ -24,7 +24,7 @@ class MyDataSet(Dataset):
         assert os.path.exists(csv_path), "file:'{}' not found.".format(csv_path)
         csv_data = pd.read_csv(csv_path)
         self.total_num = csv_data.shape[0]
-        self.img_paths = [os.path.join(images_dir, i)for i in csv_data["filename"].values]
+        self.img_paths = [os.path.join(images_dir, i) for i in csv_data["filename"].values]
         self.img_label = [self.label_dict[i][0] for i in csv_data["label"].values]
         self.labels = set(csv_data["label"].values)
 

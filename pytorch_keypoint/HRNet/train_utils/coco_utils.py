@@ -13,6 +13,7 @@ def coco_remove_images_without_annotations(dataset, ids):
     :param cat_list:
     :return:
     """
+
     def _has_only_empty_bbox(anno):
         return all(any(o <= 1 for o in obj["bbox"][2:]) for obj in anno)
 

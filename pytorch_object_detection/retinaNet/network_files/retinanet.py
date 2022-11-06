@@ -324,7 +324,7 @@ class RetinaNet(nn.Module):
         self.anchor_generator = anchor_generator
 
         if head is None:
-            head = RetinaNetHead(backbone.out_channels,   # in_channels
+            head = RetinaNetHead(backbone.out_channels,  # in_channels
                                  anchor_generator.num_anchors_per_location()[0],  # num_anchors
                                  num_classes)  # num_classes
         self.head = head

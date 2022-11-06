@@ -8,7 +8,6 @@ import itertools
 import tensorflow as tf
 from tensorflow.keras import layers, Model, Input
 
-
 CONV_KERNEL_INITIALIZER = {
     'class_name': 'VarianceScaling',
     'config': {
@@ -443,7 +442,6 @@ def efficientnetv2_l(num_classes: int = 1000):
                            dropout_rate=0.4,
                            name="efficientnetv2-l")
     return model
-
 
 # m = efficientnetv2_s()
 # m.summary()

@@ -18,7 +18,7 @@ def create_model(num_classes):
     # --- mobilenet_v3_large fpn backbone --- #
     backbone = torchvision.models.mobilenet_v3_large(pretrained=True)
     # print(backbone)
-    return_layers = {"features.6": "0",   # stride 8
+    return_layers = {"features.6": "0",  # stride 8
                      "features.12": "1",  # stride 16
                      "features.16": "2"}  # stride 32
     # 提供给fpn的每个特征层channel

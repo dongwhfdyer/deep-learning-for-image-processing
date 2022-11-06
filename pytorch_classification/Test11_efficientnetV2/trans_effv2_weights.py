@@ -7,7 +7,6 @@ def main(model_name: str = "efficientnetv2-s",
          tf_weights_path: str = "./efficientnetv2-s/model",
          stage0_num: int = 2,
          fused_conv_num: int = 10):
-
     except_var = ["global_step"]
 
     new_weights = {}

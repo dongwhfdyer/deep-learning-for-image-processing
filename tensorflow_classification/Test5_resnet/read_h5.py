@@ -8,10 +8,3 @@ for root_name, g in f.items():
             name = root_name + "/" + str(i, encoding="utf-8")
             data = f[name]
             print(data.value)
-
-
-
-
-
-
-

@@ -18,7 +18,6 @@ img = np.array(img) / 255.
 # Add the image to a batch where it's the only member.
 img = (np.expand_dims(img, 0))
 
-
 model = AlexNet_v1(class_num=5)  # functional api
 # model = AlexNet_v2(class_num=5)  # subclass api
 # model.build((None, 224, 224, 3))

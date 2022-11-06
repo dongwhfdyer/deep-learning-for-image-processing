@@ -27,7 +27,7 @@ def create_model(num_classes):
                                         aspect_ratios=((0.5, 1.0, 2.0),))
 
     roi_pooler = torchvision.ops.MultiScaleRoIAlign(featmap_names=['0'],  # 在哪些特征层上进行roi pooling
-                                                    output_size=[7, 7],   # roi_pooling输出特征矩阵尺寸
+                                                    output_size=[7, 7],  # roi_pooling输出特征矩阵尺寸
                                                     sampling_ratio=2)  # 采样率
 
     model = FasterRCNN(backbone=backbone,
@@ -176,7 +176,7 @@ def main():
                                                    step_size=3,
                                                    gamma=0.33)
     num_epochs = 20
-    for epoch in range(init_epochs, num_epochs+init_epochs, 1):
+    for epoch in range(init_epochs, num_epochs + init_epochs, 1):
         # train for one epoch, printing every 50 iterations
         mean_loss, lr = utils.train_one_epoch(model, optimizer, train_data_loader,
                                               device, epoch, print_freq=50,
@@ -201,7 +201,7 @@ def main():
 
         # save weights
         # 仅保存最后5个epoch的权重
-        if epoch in range(num_epochs+init_epochs)[-5:]:
+        if epoch in range(num_epochs + init_epochs)[-5:]:
             save_files = {
                 'model': model.state_dict(),
                 'optimizer': optimizer.state_dict(),

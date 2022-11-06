@@ -12,7 +12,7 @@ def main():
 
     files_name = sorted([file.split(".")[0] for file in os.listdir(files_path)])
     files_num = len(files_name)
-    val_index = random.sample(range(0, files_num), k=int(files_num*val_rate))
+    val_index = random.sample(range(0, files_num), k=int(files_num * val_rate))
     train_files = []
     val_files = []
     for index, file_name in enumerate(files_name):

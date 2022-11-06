@@ -100,7 +100,7 @@ def main(args):
         collate_fn=train_data_set.collate_fn)
 
     print("Creating model")
-    model = create_model(num_classes=args.num_classes+1)
+    model = create_model(num_classes=args.num_classes + 1)
     model.to(device)
 
     model_without_ddp = model
@@ -190,6 +190,7 @@ def main(args):
 
 if __name__ == "__main__":
     import argparse
+
     parser = argparse.ArgumentParser(
         description=__doc__)
 
@@ -213,7 +214,7 @@ if __name__ == "__main__":
     # 学习率，这个需要根据gpu的数量以及batch_size进行设置0.005 / 8 * num_GPU
     parser.add_argument('--lr', default=0.005, type=float,
                         help='initial learning rate, 0.005 is the default value for training '
-                        'on 8 gpus and 2 images_per_gpu')
+                             'on 8 gpus and 2 images_per_gpu')
     # SGD的momentum参数
     parser.add_argument('--momentum', default=0.9, type=float, metavar='M',
                         help='momentum')

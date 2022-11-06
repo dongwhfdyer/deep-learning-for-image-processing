@@ -19,6 +19,7 @@ class Block(layers.Layer):
         drop_rate (float): Stochastic depth rate. Default: 0.0
         layer_scale_init_value (float): Init value for Layer Scale. Default: 1e-6.
     """
+
     def __init__(self, dim, drop_rate=0., layer_scale_init_value=1e-6, name: str = None):
         super().__init__(name=name)
         self.layer_scale_init_value = layer_scale_init_value
@@ -113,6 +114,7 @@ class ConvNeXt(Model):
         drop_path_rate (float): Stochastic depth rate. Default: 0.
         layer_scale_init_value (float): Init value for Layer Scale. Default: 1e-6.
     """
+
     def __init__(self, num_classes: int, depths: list, dims: list, drop_path_rate: float = 0.,
                  layer_scale_init_value: float = 1e-6):
         super().__init__()

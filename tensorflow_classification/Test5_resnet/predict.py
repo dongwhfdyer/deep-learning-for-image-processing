@@ -53,7 +53,7 @@ def main():
 
     # load weights
     weights_path = './save_weights/resNet_50.ckpt'
-    assert len(glob.glob(weights_path+"*")), "cannot find {}".format(weights_path)
+    assert len(glob.glob(weights_path + "*")), "cannot find {}".format(weights_path)
     model.load_weights(weights_path)
 
     # prediction

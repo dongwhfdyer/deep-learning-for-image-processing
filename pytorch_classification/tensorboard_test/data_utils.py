@@ -91,7 +91,7 @@ def plot_data_loader_image(data_loader):
             # 反Normalize操作
             img = (img * [0.229, 0.224, 0.225] + [0.485, 0.456, 0.406]) * 255
             label = labels[i].item()
-            plt.subplot(1, plot_num, i+1)
+            plt.subplot(1, plot_num, i + 1)
             plt.xlabel(class_indices[str(label)])
             plt.xticks([])  # 去掉x轴的刻度
             plt.yticks([])  # 去掉y轴的刻度
@@ -187,7 +187,7 @@ def plot_class_preds(net,
     fig = plt.figure(figsize=(num_imgs * 2.5, 3), dpi=100)
     for i in range(num_imgs):
         # 1：子图共1行，num_imgs:子图共num_imgs列，当前绘制第i+1个子图
-        ax = fig.add_subplot(1, num_imgs, i+1, xticks=[], yticks=[])
+        ax = fig.add_subplot(1, num_imgs, i + 1, xticks=[], yticks=[])
 
         # CHW -> HWC
         npimg = images[i].cpu().numpy().transpose(1, 2, 0)
@@ -205,5 +205,3 @@ def plot_class_preds(net,
         ax.set_title(title, color=("green" if preds[i] == labels[i] else "red"))
 
     return fig
-
-

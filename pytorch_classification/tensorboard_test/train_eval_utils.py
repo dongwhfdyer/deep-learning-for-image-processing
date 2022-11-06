@@ -54,9 +54,3 @@ def evaluate(model, data_loader, device):
     acc = sum_num.item() / num_samples
 
     return acc
-
-
-
-
-
-

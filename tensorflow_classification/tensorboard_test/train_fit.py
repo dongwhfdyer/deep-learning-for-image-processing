@@ -5,6 +5,7 @@ import datetime
 
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
 assert tf.version.VERSION >= "2.4.0", "version of tf must greater/equal than 2.4.0"
 
 

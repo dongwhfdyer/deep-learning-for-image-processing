@@ -37,7 +37,6 @@ plt.legend()
 plt.show()
 plt.close()
 
-
 x = list(range(30))
 single_gpu = [0.569, 0.576, 0.654, 0.648, 0.609,
               0.637, 0.699, 0.709, 0.715, 0.715,
@@ -53,7 +52,6 @@ plt.ylabel('Accuracy')
 plt.legend()
 plt.show()
 plt.close()
-
 
 # epochs = 30
 # lrf = 0.1

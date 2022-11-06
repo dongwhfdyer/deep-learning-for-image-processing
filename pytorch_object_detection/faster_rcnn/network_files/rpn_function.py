@@ -262,7 +262,7 @@ def permute_and_flatten(layer, N, A, C, H, W):
     # view函数只能用于内存中连续存储的tensor，permute等操作会使tensor在内存中变得不再连续，此时就不能再调用view函数
     # reshape则不需要依赖目标tensor是否在内存中是连续的
     # [batch_size, anchors_num_per_position * (C or 4), height, width]
-    layer = layer.view(N, -1, C,  H, W)
+    layer = layer.view(N, -1, C, H, W)
     # 调换tensor维度
     layer = layer.permute(0, 3, 4, 1, 2)  # [N, H, W, -1, C]
     layer = layer.reshape(N, -1, C)
@@ -484,7 +484,7 @@ class RegionProposalNetwork(torch.nn.Module):
 
         # Returns a tensor of size size filled with fill_value
         # levels负责记录分隔不同预测特征层上的anchors索引信息
-        levels = [torch.full((n, ), idx, dtype=torch.int64, device=device)
+        levels = [torch.full((n,), idx, dtype=torch.int64, device=device)
                   for idx, n in enumerate(num_anchors_per_level)]
         levels = torch.cat(levels, 0)
 
@@ -578,9 +578,9 @@ class RegionProposalNetwork(torch.nn.Module):
         return objectness_loss, box_loss
 
     def forward(self,
-                images,        # type: ImageList
-                features,      # type: Dict[str, Tensor]
-                targets=None   # type: Optional[List[Dict[str, Tensor]]]
+                images,  # type: ImageList
+                features,  # type: Dict[str, Tensor]
+                targets=None  # type: Optional[List[Dict[str, Tensor]]]
                 ):
         # type: (...) -> Tuple[List[Tensor], Dict[str, Tensor]]
         """

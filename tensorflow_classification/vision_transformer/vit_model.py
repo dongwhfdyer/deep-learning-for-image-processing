@@ -11,6 +11,7 @@ class PatchEmbed(layers.Layer):
     """
     2D Image to Patch Embedding
     """
+
     def __init__(self, img_size=224, patch_size=16, embed_dim=768):
         super(PatchEmbed, self).__init__()
         self.embed_dim = embed_dim

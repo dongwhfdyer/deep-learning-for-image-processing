@@ -47,7 +47,7 @@ def main():
     model = create_model(num_classes=num_classes)
 
     weights_path = './save_weights/efficientnetv2.ckpt'
-    assert len(glob.glob(weights_path+"*")), "cannot find {}".format(weights_path)
+    assert len(glob.glob(weights_path + "*")), "cannot find {}".format(weights_path)
     model.load_weights(weights_path)
 
     result = np.squeeze(model.predict(img))

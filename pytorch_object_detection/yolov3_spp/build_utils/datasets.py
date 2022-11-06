@@ -16,7 +16,6 @@ from build_utils.utils import xyxy2xywh, xywh2xyxy
 help_url = 'https://github.com/ultralytics/yolov3/wiki/Train-Custom-Data'
 img_formats = ['.bmp', '.jpg', '.jpeg', '.png', '.tif', '.dng']
 
-
 # get orientation in exif tag
 # 找到图像exif信息中对应旋转信息的key值
 for orientation in ExifTags.TAGS.keys():
@@ -48,7 +47,7 @@ def exif_size(img):
 
 class LoadImagesAndLabels(Dataset):  # for training/testing
     def __init__(self,
-                 path,   # 指向data/my_train_data.txt路径或data/my_val_data.txt路径
+                 path,  # 指向data/my_train_data.txt路径或data/my_val_data.txt路径
                  # 这里设置的是预处理后输出的图片尺寸
                  # 当为训练集时，设置的是训练过程中(开启多尺度)的最大尺寸
                  # 当为验证集时，设置的是最终使用的网络大小
@@ -448,10 +447,10 @@ def load_mosaic(self, index):
         labels = x.copy()  # 深拷贝，防止修改原数据
         if x.size > 0:  # Normalized xywh to pixel xyxy format
             # 计算标注数据在马赛克图像中的坐标(绝对坐标)
-            labels[:, 1] = w * (x[:, 1] - x[:, 3] / 2) + padw   # xmin
-            labels[:, 2] = h * (x[:, 2] - x[:, 4] / 2) + padh   # ymin
-            labels[:, 3] = w * (x[:, 1] + x[:, 3] / 2) + padw   # xmax
-            labels[:, 4] = h * (x[:, 2] + x[:, 4] / 2) + padh   # ymax
+            labels[:, 1] = w * (x[:, 1] - x[:, 3] / 2) + padw  # xmin
+            labels[:, 2] = h * (x[:, 2] - x[:, 4] / 2) + padh  # ymin
+            labels[:, 3] = w * (x[:, 1] + x[:, 3] / 2) + padw  # xmax
+            labels[:, 4] = h * (x[:, 2] + x[:, 4] / 2) + padh  # ymax
         labels4.append(labels)
 
     # Concat/clip labels
@@ -616,7 +615,3 @@ def create_folder(path="./new_folder"):
     if os.path.exists(path):
         shutil.rmtree(path)  # dalete output folder
     os.makedirs(path)  # make new output folder
-
-
-
-

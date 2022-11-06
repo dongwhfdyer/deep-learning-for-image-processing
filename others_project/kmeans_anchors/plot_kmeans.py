@@ -1,5 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
+
 np.random.seed(0)
 
 colors = np.array(['blue', 'black'])
@@ -50,7 +51,7 @@ def k_means(data, k, dist=np.mean):
 
         # plot
         plot_clusters(data, current_nearest, clusters, f"step {step}")
-        
+
         if (last_nearest == current_nearest).all():
             break  # clusters won't change
         for cluster in range(k):

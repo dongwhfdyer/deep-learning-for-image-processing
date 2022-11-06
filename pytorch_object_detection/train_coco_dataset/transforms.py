@@ -4,6 +4,7 @@ from torchvision.transforms import functional as F
 
 class Compose(object):
     """组合多个transform函数"""
+
     def __init__(self, transforms):
         self.transforms = transforms
 
@@ -15,6 +16,7 @@ class Compose(object):
 
 class ToTensor(object):
     """将PIL图像转为Tensor"""
+
     def __call__(self, image, target):
         image = F.to_tensor(image)
         return image, target
@@ -22,6 +24,7 @@ class ToTensor(object):
 
 class RandomHorizontalFlip(object):
     """随机水平翻转图像以及bboxes"""
+
     def __init__(self, prob=0.5):
         self.prob = prob
 

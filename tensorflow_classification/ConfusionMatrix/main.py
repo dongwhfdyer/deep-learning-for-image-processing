@@ -19,6 +19,7 @@ class ConfusionMatrix(object):
     本例程使用matplotlib-3.2.1(windows and ubuntu)绘制正常
     需要额外安装prettytable库
     """
+
     def __init__(self, num_classes: int, labels: list):
         self.matrix = np.zeros((num_classes, num_classes))
         self.num_classes = num_classes
@@ -112,7 +113,7 @@ if __name__ == '__main__':
     model = MobileNetV2(num_classes=5)
     # feature.build((None, 224, 224, 3))  # when using subclass model
     pre_weights_path = './myMobileNet.ckpt'
-    assert len(glob.glob(pre_weights_path+"*")), "cannot find {}".format(pre_weights_path)
+    assert len(glob.glob(pre_weights_path + "*")), "cannot find {}".format(pre_weights_path)
     model.load_weights(pre_weights_path)
 
     # read class_indict

@@ -9,7 +9,6 @@ from lxml import etree
 import json
 import shutil
 
-
 # voc数据集根目录以及版本
 voc_root = "/data/VOCdevkit"
 voc_version = "VOC2012"

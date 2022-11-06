@@ -5,7 +5,6 @@ from model import shufflenet_v2_x1_0
 
 
 def main():
-
     m = shufflenet_v2_x1_0()
     m_info = [(i.name.replace(":0", ""), list(i.shape))
               for i in m.weights]

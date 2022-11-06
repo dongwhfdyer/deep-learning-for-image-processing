@@ -10,16 +10,16 @@ def main(weights_path: str,
     # keys, values = zip(*list(ckpt_dict.items()))
     w_dict = {}
     for k, v in ckpt_dict.items():
-        key_ = k.replace("Transformer/", "").\
-            replace("MultiHeadDotProductAttention_1", "MultiHeadAttention").\
-            replace("MlpBlock_3", "MlpBlock").\
-            replace("posembed_input/pos_embedding", "pos_embed").\
-            replace("encoder_norm/bias", "encoder_norm/beta").\
-            replace("encoder_norm/scale", "encoder_norm/gamma").\
-            replace("LayerNorm_0/bias", "LayerNorm_0/beta").\
+        key_ = k.replace("Transformer/", ""). \
+            replace("MultiHeadDotProductAttention_1", "MultiHeadAttention"). \
+            replace("MlpBlock_3", "MlpBlock"). \
+            replace("posembed_input/pos_embedding", "pos_embed"). \
+            replace("encoder_norm/bias", "encoder_norm/beta"). \
+            replace("encoder_norm/scale", "encoder_norm/gamma"). \
+            replace("LayerNorm_0/bias", "LayerNorm_0/beta"). \
             replace("LayerNorm_0/scale", "LayerNorm_0/gamma"). \
             replace("LayerNorm_2/bias", "LayerNorm_1/beta"). \
-            replace("LayerNorm_2/scale", "LayerNorm_1/gamma").\
+            replace("LayerNorm_2/scale", "LayerNorm_1/gamma"). \
             replace("embedding", "patch_embed/conv2d")
         w_dict[key_] = v
 

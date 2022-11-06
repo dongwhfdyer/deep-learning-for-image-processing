@@ -30,7 +30,7 @@ def convert_to_coco_api(ds):
             # box (x, y, w, h)
             boxes = obj[1:]
             # (x, y, w, h) to (xmin, ymin, w, h)
-            boxes[:2] -= 0.5*boxes[2:]
+            boxes[:2] -= 0.5 * boxes[2:]
             boxes[[0, 2]] *= img_dict["width"]
             boxes[[1, 3]] *= img_dict["height"]
             boxes = boxes.tolist()

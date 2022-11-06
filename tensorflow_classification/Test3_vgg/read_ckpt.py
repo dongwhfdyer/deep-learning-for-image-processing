@@ -40,7 +40,7 @@ def rename_var(ckpt_path, new_ckpt_path, num_classes=5):
                 # new_var_name = new_var_name.replace("fc8", "dense_2")
                 continue
 
-        #     print(new_var_name)
+            #     print(new_var_name)
             re_var = tf.Variable(var, name=new_var_name)
             new_var_list.append(re_var)
 

@@ -35,7 +35,7 @@ def main():
     print("using {} device.".format(device))
 
     # create model
-    model = deeplabv3_resnet50(aux=aux, num_classes=classes+1)
+    model = deeplabv3_resnet50(aux=aux, num_classes=classes + 1)
 
     # delete weights about aux_classifier
     weights_dict = torch.load(weights_path, map_location='cpu')['model']

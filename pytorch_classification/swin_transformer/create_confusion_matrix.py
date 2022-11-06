@@ -21,6 +21,7 @@ class ConfusionMatrix(object):
     本例程使用matplotlib-3.2.1(windows and ubuntu)绘制正常
     需要额外安装prettytable库
     """
+
     def __init__(self, num_classes: int, labels: list):
         self.matrix = np.zeros((num_classes, num_classes))
         self.num_classes = num_classes

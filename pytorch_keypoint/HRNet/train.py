@@ -13,7 +13,7 @@ from train_utils import train_eval_utils as utils
 
 def create_model(num_joints, load_pretrain_weights=True):
     model = HighResolutionNet(base_channel=32, num_joints=num_joints)
-    
+
     if load_pretrain_weights:
         # 载入预训练模型权重
         # 链接:https://pan.baidu.com/s/1Lu6mMAWfm_8GGykttFMpVw 提取码:f43o

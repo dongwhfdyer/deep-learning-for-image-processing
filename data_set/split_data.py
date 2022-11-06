@@ -45,7 +45,7 @@ def main():
         images = os.listdir(cla_path)
         num = len(images)
         # 随机采样验证集的索引
-        eval_index = random.sample(images, k=int(num*split_rate))
+        eval_index = random.sample(images, k=int(num * split_rate))
         for index, image in enumerate(images):
             if image in eval_index:
                 # 将分配至验证集中的文件复制到相应目录
@@ -57,7 +57,7 @@ def main():
                 image_path = os.path.join(cla_path, image)
                 new_path = os.path.join(train_root, cla)
                 copy(image_path, new_path)
-            print("\r[{}] processing [{}/{}]".format(cla, index+1, num), end="")  # processing bar
+            print("\r[{}] processing [{}/{}]".format(cla, index + 1, num), end="")  # processing bar
         print()
 
     print("processing done!")

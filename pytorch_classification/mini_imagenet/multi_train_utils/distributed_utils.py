@@ -71,7 +71,6 @@ def reduce_value(value, average=True):
 
 
 def warmup_lr_scheduler(optimizer, warmup_iters, warmup_factor):
-
     def f(x):
         """根据step数返回一个学习率倍率因子"""
         if x >= warmup_iters:  # 当迭代数大于给定的warmup_iters时，倍率因子为1

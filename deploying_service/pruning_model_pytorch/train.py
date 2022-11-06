@@ -7,7 +7,6 @@ import os
 import torch.optim as optim
 from model import resnet34, resnet101
 
-
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 
@@ -21,11 +20,10 @@ data_transform = {
                                transforms.ToTensor(),
                                transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])])}
 
-
 data_root = os.path.abspath(os.path.join(os.getcwd(), "../.."))  # get data root path
 image_path = data_root + "/data_set/flower_data/"  # flower data set path
 
-train_dataset = datasets.ImageFolder(root=image_path+"train",
+train_dataset = datasets.ImageFolder(root=image_path + "train",
                                      transform=data_transform["train"])
 train_num = len(train_dataset)
 
@@ -80,10 +78,10 @@ for epoch in range(3):
         # print statistics
         running_loss += loss.item()
         # print train process
-        rate = (step+1)/len(train_loader)
+        rate = (step + 1) / len(train_loader)
         a = "*" * int(rate * 50)
         b = "." * int((1 - rate) * 50)
-        print("\rtrain loss: {:^3.0f}%[{}->{}]{:.4f}".format(int(rate*100), a, b, loss), end="")
+        print("\rtrain loss: {:^3.0f}%[{}->{}]{:.4f}".format(int(rate * 100), a, b, loss), end="")
     print()
 
     # validate
@@ -104,5 +102,3 @@ for epoch in range(3):
               (epoch + 1, running_loss / step, val_accurate))
 
 print('Finished Training')
-
-

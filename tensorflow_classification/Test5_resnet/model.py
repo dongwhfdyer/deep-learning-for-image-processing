@@ -138,4 +138,3 @@ def resnet50(im_width=224, im_height=224, num_classes=1000, include_top=True):
 
 def resnet101(im_width=224, im_height=224, num_classes=1000, include_top=True):
     return _resnet(Bottleneck, [3, 4, 23, 3], im_width, im_height, num_classes, include_top)
-

@@ -15,9 +15,9 @@ from model_config import get_config
 
 
 def make_divisible(
-    v: Union[float, int],
-    divisor: Optional[int] = 8,
-    min_value: Optional[Union[float, int]] = None,
+        v: Union[float, int],
+        divisor: Optional[int] = 8,
+        min_value: Optional[Union[float, int]] = None,
 ) -> Union[float, int]:
     """
     This function is taken from the original tf repo.
@@ -62,15 +62,15 @@ class ConvLayer(nn.Module):
     """
 
     def __init__(
-        self,
-        in_channels: int,
-        out_channels: int,
-        kernel_size: Union[int, Tuple[int, int]],
-        stride: Optional[Union[int, Tuple[int, int]]] = 1,
-        groups: Optional[int] = 1,
-        bias: Optional[bool] = False,
-        use_norm: Optional[bool] = True,
-        use_act: Optional[bool] = True,
+            self,
+            in_channels: int,
+            out_channels: int,
+            kernel_size: Union[int, Tuple[int, int]],
+            stride: Optional[Union[int, Tuple[int, int]]] = 1,
+            groups: Optional[int] = 1,
+            bias: Optional[bool] = False,
+            use_norm: Optional[bool] = True,
+            use_act: Optional[bool] = True,
     ) -> None:
         super().__init__()
 
@@ -137,12 +137,12 @@ class InvertedResidual(nn.Module):
     """
 
     def __init__(
-        self,
-        in_channels: int,
-        out_channels: int,
-        stride: int,
-        expand_ratio: Union[int, float],
-        skip_connection: Optional[bool] = True,
+            self,
+            in_channels: int,
+            out_channels: int,
+            stride: int,
+            expand_ratio: Union[int, float],
+            skip_connection: Optional[bool] = True,
     ) -> None:
         assert stride in [1, 2]
         hidden_dim = make_divisible(int(round(in_channels * expand_ratio)), 8)
@@ -188,7 +188,7 @@ class InvertedResidual(nn.Module):
         self.exp = expand_ratio
         self.stride = stride
         self.use_res_connect = (
-            self.stride == 1 and in_channels == out_channels and skip_connection
+                self.stride == 1 and in_channels == out_channels and skip_connection
         )
 
     def forward(self, x: Tensor, *args, **kwargs) -> Tensor:
@@ -220,20 +220,20 @@ class MobileViTBlock(nn.Module):
     """
 
     def __init__(
-        self,
-        in_channels: int,
-        transformer_dim: int,
-        ffn_dim: int,
-        n_transformer_blocks: int = 2,
-        head_dim: int = 32,
-        attn_dropout: float = 0.0,
-        dropout: float = 0.0,
-        ffn_dropout: float = 0.0,
-        patch_h: int = 8,
-        patch_w: int = 8,
-        conv_ksize: Optional[int] = 3,
-        *args,
-        **kwargs
+            self,
+            in_channels: int,
+            transformer_dim: int,
+            ffn_dim: int,
+            n_transformer_blocks: int = 2,
+            head_dim: int = 32,
+            attn_dropout: float = 0.0,
+            dropout: float = 0.0,
+            ffn_dropout: float = 0.0,
+            patch_h: int = 8,
+            patch_w: int = 8,
+            conv_ksize: Optional[int] = 3,
+            *args,
+            **kwargs
     ) -> None:
         super().__init__()
 
@@ -400,6 +400,7 @@ class MobileViT(nn.Module):
     """
     This class implements the `MobileViT architecture <https://arxiv.org/abs/2110.02178?context=cs.LG>`_
     """
+
     def __init__(self, model_cfg: Dict, num_classes: int = 1000):
         super().__init__()
 

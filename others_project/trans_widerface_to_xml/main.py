@@ -46,8 +46,8 @@ def create_xml(labels: list, img_root: str, img_path: str, save_root: str) -> bo
         #     cv2.waitKey(0)
 
         ob_list.append(ob_dict)
-    
-    if len(ob_list) == 0: 
+
+    if len(ob_list) == 0:
         print(f"in {img_path}, no object, skip.")
         return False
 
@@ -116,7 +116,7 @@ def parse_wider_txt(data_root: str, split: str, save_root: str):
             else:
                 raise RuntimeError("Error parsing annotation file {}".format(txt_path))
 
-        with open(split+'.txt', 'w') as w:
+        with open(split + '.txt', 'w') as w:
             w.write("\n".join(xml_list))
 
 

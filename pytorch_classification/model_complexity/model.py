@@ -33,6 +33,7 @@ class DropPath(nn.Module):
     Drop paths (Stochastic Depth) per sample  (when applied in main path of residual blocks).
     "Deep Networks with Stochastic Depth", https://arxiv.org/pdf/1603.09382.pdf
     """
+
     def __init__(self, drop_prob=None):
         super(DropPath, self).__init__()
         self.drop_prob = drop_prob
@@ -92,7 +93,7 @@ class ConvBNAct(nn.Module):
 
 class SqueezeExcite(nn.Module):
     def __init__(self,
-                 input_c: int,   # block input channel
+                 input_c: int,  # block input channel
                  expand_c: int,  # block expand channel
                  se_ratio: float = 0.25):
         super(SqueezeExcite, self).__init__()

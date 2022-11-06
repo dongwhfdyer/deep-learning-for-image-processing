@@ -59,7 +59,6 @@ def cat_list(images, fill_value=0):
         pad_img[..., :img.shape[-2], :img.shape[-1]].copy_(img)
     return batched_imgs
 
-
 # dataset = VOCSegmentation(voc_root="/data/", transforms=get_transform(train=True))
 # d1 = dataset[0]
 # print(d1)

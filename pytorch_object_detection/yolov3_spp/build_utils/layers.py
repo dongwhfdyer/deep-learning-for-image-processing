@@ -28,6 +28,7 @@ class FeatureConcat(nn.Module):
     """
     将多个特征矩阵在channel维度进行concatenate拼接
     """
+
     def __init__(self, layers):
         super(FeatureConcat, self).__init__()
         self.layers = layers  # layer indices
@@ -41,6 +42,7 @@ class WeightedFeatureFusion(nn.Module):  # weighted sum of 2 or more layers http
     """
     将多个特征矩阵的值进行融合(add操作)
     """
+
     def __init__(self, layers, weight=False):
         super(WeightedFeatureFusion, self).__init__()
         self.layers = layers  # layer indices

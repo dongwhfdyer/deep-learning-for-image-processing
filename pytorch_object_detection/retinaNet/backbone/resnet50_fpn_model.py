@@ -135,7 +135,7 @@ def overwrite_eps(model, eps):
 
 
 def resnet50_fpn_backbone(pretrain_path="",
-                          norm_layer=FrozenBatchNorm2d,   # FrozenBatchNorm2d的功能与BatchNorm2d类似，但参数无法更新
+                          norm_layer=FrozenBatchNorm2d,  # FrozenBatchNorm2d的功能与BatchNorm2d类似，但参数无法更新
                           trainable_layers=3,
                           returned_layers=None,
                           extra_blocks=None):

@@ -74,7 +74,7 @@ def main():
     # 直接下载我转好的权重
     # download weights 链接: https://pan.baidu.com/s/1tLe9ahTMIwQAX7do_S59Zg  密码: u199
     pre_weights_path = './pretrain_weights.ckpt'
-    assert len(glob.glob(pre_weights_path+"*")), "cannot find {}".format(pre_weights_path)
+    assert len(glob.glob(pre_weights_path + "*")), "cannot find {}".format(pre_weights_path)
     feature.load_weights(pre_weights_path)
     feature.trainable = False
     feature.summary()

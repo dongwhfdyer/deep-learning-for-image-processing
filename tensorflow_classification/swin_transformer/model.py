@@ -7,6 +7,7 @@ class PatchEmbed(layers.Layer):
     """
     2D Image to Patch Embedding
     """
+
     def __init__(self, patch_size=4, embed_dim=96, norm_layer=None):
         super(PatchEmbed, self).__init__()
         self.embed_dim = embed_dim
@@ -85,7 +86,7 @@ class PatchMerging(layers.Layer):
     def __init__(self, dim: int, norm_layer=layers.LayerNormalization, name=None):
         super(PatchMerging, self).__init__(name=name)
         self.dim = dim
-        self.reduction = layers.Dense(2*dim,
+        self.reduction = layers.Dense(2 * dim,
                                       use_bias=False,
                                       kernel_initializer=initializers.TruncatedNormal(stddev=0.02),
                                       name="reduction")
@@ -114,7 +115,7 @@ class PatchMerging(layers.Layer):
         x2 = x[:, 0::2, 1::2, :]  # [B, H/2, W/2, C]
         x3 = x[:, 1::2, 1::2, :]  # [B, H/2, W/2, C]
         x = tf.concat([x0, x1, x2, x3], -1)  # [B, H/2, W/2, 4*C]
-        x = tf.reshape(x, [B, -1, 4*C])  # [B, H/2*W/2, 4*C]
+        x = tf.reshape(x, [B, -1, 4 * C])  # [B, H/2*W/2, 4*C]
 
         x = self.norm(x)
         x = self.reduction(x)  # [B, H/2*W/2, 2*C]
@@ -203,7 +204,7 @@ class WindowAttention(layers.Layer):
         coords_flatten = np.reshape(coords, [2, -1])  # [2, Mh*Mw]
         # [2, Mh*Mw, 1] - [2, 1, Mh*Mw]
         relative_coords = coords_flatten[:, :, None] - coords_flatten[:, None, :]  # [2, Mh*Mw, Mh*Mw]
-        relative_coords = np.transpose(relative_coords, [1, 2, 0])   # [Mh*Mw, Mh*Mw, 2]
+        relative_coords = np.transpose(relative_coords, [1, 2, 0])  # [Mh*Mw, Mh*Mw, 2]
         relative_coords[:, :, 0] += self.window_size[0] - 1  # shift to start from 0
         relative_coords[:, :, 1] += self.window_size[1] - 1
         relative_coords[:, :, 0] *= 2 * self.window_size[1] - 1

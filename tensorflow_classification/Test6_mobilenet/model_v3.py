@@ -88,16 +88,15 @@ def _se_block(inputs, filters, prefix, se_ratio=1 / 4.):
 
 
 def _inverted_res_block(x,
-                        input_c: int,      # input channel
+                        input_c: int,  # input channel
                         kernel_size: int,  # kennel size
-                        exp_c: int,        # expanded channel
-                        out_c: int,        # out channel
-                        use_se: bool,      # whether using SE
-                        activation: str,   # RE or HS
+                        exp_c: int,  # expanded channel
+                        out_c: int,  # out channel
+                        use_se: bool,  # whether using SE
+                        activation: str,  # RE or HS
                         stride: int,
                         block_id: int,
                         alpha: float = 1.0):
-
     bn = partial(layers.BatchNormalization, epsilon=0.001, momentum=0.99)
 
     input_c = _make_divisible(input_c * alpha)

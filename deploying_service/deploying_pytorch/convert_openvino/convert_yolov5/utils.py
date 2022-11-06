@@ -12,7 +12,6 @@ from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 from compression.api import DataLoader, Metric
 
-
 coco80_names = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light',
                 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
                 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
@@ -260,6 +259,7 @@ def _coco_remove_images_without_annotations(dataset, ids):
     :param cat_list:
     :return:
     """
+
     def _has_only_empty_bbox(anno):
         return all(any(o <= 1 for o in obj["bbox"][2:]) for obj in anno)
 
@@ -354,6 +354,7 @@ class MyDataLoader(DataLoader):
         dataset (string): "train" or "val.
         size (tuple): (h, w)
     """
+
     def __init__(self, root, dataset="train", size=(640, 640)):
         assert dataset in ["train", "val"], 'dataset must be in ["train", "val"]'
         anno_file = "instances_{}2017.json".format(dataset)
@@ -549,4 +550,3 @@ class EvalCOCOMetric:
 
         coco_info = self.coco_evaluator.stats.tolist()  # numpy to list
         return coco_info
-

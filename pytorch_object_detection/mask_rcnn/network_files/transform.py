@@ -75,7 +75,6 @@ def _resize_image_and_masks(image: Tensor,
                             target: Optional[Dict[str, Tensor]] = None,
                             fixed_size: Optional[Tuple[int, int]] = None
                             ) -> Tuple[Tensor, Optional[Dict[str, Tensor]]]:
-
     if torchvision._is_tracing():
         im_shape = _get_shape_onnx(image)
     else:
@@ -252,10 +251,10 @@ class GeneralizedRCNNTransform(nn.Module):
         super().__init__()
         if not isinstance(min_size, (list, tuple)):
             min_size = (min_size,)
-        self.min_size = min_size      # 指定图像的最小边长范围
-        self.max_size = max_size      # 指定图像的最大边长范围
+        self.min_size = min_size  # 指定图像的最小边长范围
+        self.max_size = max_size  # 指定图像的最大边长范围
         self.image_mean = image_mean  # 指定图像在标准化处理中的均值
-        self.image_std = image_std    # 指定图像在标准化处理中的方差
+        self.image_std = image_std  # 指定图像在标准化处理中的方差
         self.size_divisible = size_divisible
         self.fixed_size = fixed_size
 
@@ -296,7 +295,7 @@ class GeneralizedRCNNTransform(nn.Module):
             size = float(self.torch_choice(self.min_size))  # 指定输入图片的最小边长,注意是self.min_size不是min_size
         else:
             # FIXME assume for now that testing uses the largest scale
-            size = float(self.min_size[-1])    # 指定输入图片的最小边长,注意是self.min_size不是min_size
+            size = float(self.min_size[-1])  # 指定输入图片的最小边长,注意是self.min_size不是min_size
 
         image, target = _resize_image_and_masks(image, size, float(self.max_size), target, self.fixed_size)
 
@@ -384,9 +383,9 @@ class GeneralizedRCNNTransform(nn.Module):
         return batched_imgs
 
     def postprocess(self,
-                    result,                # type: List[Dict[str, Tensor]]
-                    image_shapes,          # type: List[Tuple[int, int]]
-                    original_image_sizes   # type: List[Tuple[int, int]]
+                    result,  # type: List[Dict[str, Tensor]]
+                    image_shapes,  # type: List[Tuple[int, int]]
+                    original_image_sizes  # type: List[Tuple[int, int]]
                     ):
         # type: (...) -> List[Dict[str, Tensor]]
         """
@@ -426,7 +425,7 @@ class GeneralizedRCNNTransform(nn.Module):
         return format_string
 
     def forward(self,
-                images,       # type: List[Tensor]
+                images,  # type: List[Tensor]
                 targets=None  # type: Optional[List[Dict[str, Tensor]]]
                 ):
         # type: (...) -> Tuple[ImageList, Optional[List[Dict[str, Tensor]]]]
@@ -480,11 +479,3 @@ def resize_boxes(boxes, original_size, new_size):
     ymin = ymin * ratios_height
     ymax = ymax * ratios_height
     return torch.stack((xmin, ymin, xmax, ymax), dim=1)
-
-
-
-
-
-
-
-

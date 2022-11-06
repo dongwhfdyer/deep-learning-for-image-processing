@@ -11,22 +11,22 @@ from tensorflow.keras import layers, models
 def AlexNet_pytorch(im_height=224, im_width=224, num_classes=1000):
     # tensorflow中的tensor通道排序是NHWC
     input_image = layers.Input(shape=(im_height, im_width, 3), dtype="float32")  # output(None, 224, 224, 3)
-    x = layers.ZeroPadding2D(((2, 1), (2, 1)))(input_image)                      # output(None, 227, 227, 3)
-    x = layers.Conv2D(64, kernel_size=11, strides=4, activation="relu")(x)       # output(None, 55, 55, 64)
-    x = layers.MaxPool2D(pool_size=3, strides=2)(x)                              # output(None, 27, 27, 64)
+    x = layers.ZeroPadding2D(((2, 1), (2, 1)))(input_image)  # output(None, 227, 227, 3)
+    x = layers.Conv2D(64, kernel_size=11, strides=4, activation="relu")(x)  # output(None, 55, 55, 64)
+    x = layers.MaxPool2D(pool_size=3, strides=2)(x)  # output(None, 27, 27, 64)
     x = layers.Conv2D(192, kernel_size=5, padding="same", activation="relu")(x)  # output(None, 27, 27, 192)
-    x = layers.MaxPool2D(pool_size=3, strides=2)(x)                              # output(None, 13, 13, 128)
+    x = layers.MaxPool2D(pool_size=3, strides=2)(x)  # output(None, 13, 13, 128)
     x = layers.Conv2D(384, kernel_size=3, padding="same", activation="relu")(x)  # output(None, 13, 13, 384)
     x = layers.Conv2D(256, kernel_size=3, padding="same", activation="relu")(x)  # output(None, 13, 13, 256)
     x = layers.Conv2D(256, kernel_size=3, padding="same", activation="relu")(x)  # output(None, 13, 13, 256)
-    x = layers.MaxPool2D(pool_size=3, strides=2)(x)                              # output(None, 6, 6, 256)
+    x = layers.MaxPool2D(pool_size=3, strides=2)(x)  # output(None, 6, 6, 256)
 
-    x = layers.Flatten()(x)                         # output(None, 6*6*256)
+    x = layers.Flatten()(x)  # output(None, 6*6*256)
     x = layers.Dropout(0.5)(x)
-    x = layers.Dense(4096, activation="relu")(x)    # output(None, 4096)
+    x = layers.Dense(4096, activation="relu")(x)  # output(None, 4096)
     x = layers.Dropout(0.5)(x)
-    x = layers.Dense(4096, activation="relu")(x)    # output(None, 4096)
-    x = layers.Dense(num_classes)(x)                  # output(None, 5)
+    x = layers.Dense(4096, activation="relu")(x)  # output(None, 4096)
+    x = layers.Dense(num_classes)(x)  # output(None, 5)
     predict = layers.Softmax()(x)
 
     model = models.Model(inputs=input_image, outputs=predict)
@@ -95,7 +95,7 @@ def main():
     model = AlexNet_pytorch(im_height=im_height, im_width=im_width, num_classes=5)
 
     pre_weights_path = './pretrain_weights.ckpt'
-    assert len(glob.glob(pre_weights_path+"*")), "cannot find {}".format(pre_weights_path)
+    assert len(glob.glob(pre_weights_path + "*")), "cannot find {}".format(pre_weights_path)
     model.load_weights(pre_weights_path)
     for layer_t in model.layers:
         if 'conv2d' in layer_t.name:

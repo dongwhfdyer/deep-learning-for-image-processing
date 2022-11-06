@@ -68,9 +68,3 @@ def evaluate(model, data_loader, device):
     sum_num = reduce_value(sum_num, average=False)
 
     return sum_num.item()
-
-
-
-
-
-

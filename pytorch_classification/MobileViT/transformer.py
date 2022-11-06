@@ -24,13 +24,13 @@ class MultiHeadAttention(nn.Module):
     """
 
     def __init__(
-        self,
-        embed_dim: int,
-        num_heads: int,
-        attn_dropout: float = 0.0,
-        bias: bool = True,
-        *args,
-        **kwargs
+            self,
+            embed_dim: int,
+            num_heads: int,
+            attn_dropout: float = 0.0,
+            bias: bool = True,
+            *args,
+            **kwargs
     ) -> None:
         super().__init__()
         if embed_dim % num_heads != 0:
@@ -105,17 +105,16 @@ class TransformerEncoder(nn.Module):
     """
 
     def __init__(
-        self,
-        embed_dim: int,
-        ffn_latent_dim: int,
-        num_heads: Optional[int] = 8,
-        attn_dropout: Optional[float] = 0.0,
-        dropout: Optional[float] = 0.0,
-        ffn_dropout: Optional[float] = 0.0,
-        *args,
-        **kwargs
+            self,
+            embed_dim: int,
+            ffn_latent_dim: int,
+            num_heads: Optional[int] = 8,
+            attn_dropout: Optional[float] = 0.0,
+            dropout: Optional[float] = 0.0,
+            ffn_dropout: Optional[float] = 0.0,
+            *args,
+            **kwargs
     ) -> None:
-
         super().__init__()
 
         attn_unit = MultiHeadAttention(

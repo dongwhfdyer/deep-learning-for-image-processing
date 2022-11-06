@@ -92,7 +92,7 @@ def plot_fps(v: dict):
     plt.bar(range(len(x)), y, align='center')
     plt.xticks(range(len(x)), x)
     for i, v in enumerate(y):
-        plt.text(x=i, y=v+0.5, s=f"{v:.2f}", ha='center')
+        plt.text(x=i, y=v + 0.5, s=f"{v:.2f}", ha='center')
     plt.xlabel('model format')
     plt.ylabel('fps')
     plt.title('FPS comparison')

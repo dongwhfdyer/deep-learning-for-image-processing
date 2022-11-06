@@ -70,15 +70,15 @@ class Inception(layers.Layer):
 
         self.branch2 = Sequential([
             layers.Conv2D(ch3x3red, kernel_size=1, activation="relu"),
-            layers.Conv2D(ch3x3, kernel_size=3, padding="SAME", activation="relu")])      # output_size= input_size
+            layers.Conv2D(ch3x3, kernel_size=3, padding="SAME", activation="relu")])  # output_size= input_size
 
         self.branch3 = Sequential([
             layers.Conv2D(ch5x5red, kernel_size=1, activation="relu"),
-            layers.Conv2D(ch5x5, kernel_size=5, padding="SAME", activation="relu")])      # output_size= input_size
+            layers.Conv2D(ch5x5, kernel_size=5, padding="SAME", activation="relu")])  # output_size= input_size
 
         self.branch4 = Sequential([
             layers.MaxPool2D(pool_size=3, strides=1, padding="SAME"),  # caution: default strides==pool_size
-            layers.Conv2D(pool_proj, kernel_size=1, activation="relu")])                  # output_size= input_size
+            layers.Conv2D(pool_proj, kernel_size=1, activation="relu")])  # output_size= input_size
 
     def call(self, inputs, **kwargs):
         branch1 = self.branch1(inputs)
@@ -116,5 +116,3 @@ class InceptionAux(layers.Layer):
         x = self.softmax(x)
 
         return x
-
-

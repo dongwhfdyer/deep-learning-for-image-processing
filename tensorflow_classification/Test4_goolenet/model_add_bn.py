@@ -83,7 +83,7 @@ class Inception(layers.Layer):
             layers.ReLU(),
             layers.Conv2D(ch3x3, kernel_size=3, padding="SAME", use_bias=False, name="1/conv"),
             layers.BatchNormalization(momentum=0.9, epsilon=1e-5, name="1/bn"),
-            layers.ReLU()], name="branch2")      # output_size= input_size
+            layers.ReLU()], name="branch2")  # output_size= input_size
 
         self.branch3 = Sequential([
             layers.Conv2D(ch5x5red, kernel_size=1, use_bias=False, name="0/conv"),
@@ -91,13 +91,13 @@ class Inception(layers.Layer):
             layers.ReLU(),
             layers.Conv2D(ch5x5, kernel_size=3, padding="SAME", use_bias=False, name="1/conv"),
             layers.BatchNormalization(momentum=0.9, epsilon=1e-5, name="1/bn"),
-            layers.ReLU()], name="branch3")      # output_size= input_size
+            layers.ReLU()], name="branch3")  # output_size= input_size
 
         self.branch4 = Sequential([
             layers.MaxPool2D(pool_size=3, strides=1, padding="SAME"),  # caution: default strides==pool_size
             layers.Conv2D(pool_proj, kernel_size=1, use_bias=False, name="1/conv"),
             layers.BatchNormalization(momentum=0.9, epsilon=1e-5, name="1/bn"),
-            layers.ReLU()], name="branch4")                  # output_size= input_size
+            layers.ReLU()], name="branch4")  # output_size= input_size
 
     def call(self, inputs, **kwargs):
         branch1 = self.branch1(inputs)

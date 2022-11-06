@@ -31,9 +31,9 @@ def main():
     torch_out = model(x)
 
     # export the model
-    torch.onnx.export(model,             # model being run
-                      x,                 # model input (or a tuple for multiple inputs)
-                      onnx_file_name,    # where to save the model (can be a file or file-like object)
+    torch.onnx.export(model,  # model being run
+                      x,  # model input (or a tuple for multiple inputs)
+                      onnx_file_name,  # where to save the model (can be a file or file-like object)
                       verbose=False)
 
     # check onnx model

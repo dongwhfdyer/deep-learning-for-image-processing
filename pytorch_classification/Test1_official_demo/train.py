@@ -26,7 +26,7 @@ def main():
                                              shuffle=False, num_workers=0)
     val_data_iter = iter(val_loader)
     val_image, val_label = val_data_iter.next()
-    
+
     # classes = ('plane', 'car', 'bird', 'cat',
     #            'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
 
@@ -51,7 +51,7 @@ def main():
 
             # print statistics
             running_loss += loss.item()
-            if step % 500 == 499:    # print every 500 mini-batches
+            if step % 500 == 499:  # print every 500 mini-batches
                 with torch.no_grad():
                     outputs = net(val_image)  # [batch, 10]
                     predict_y = torch.max(outputs, dim=1)[1]

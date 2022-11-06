@@ -4,7 +4,6 @@ from resnet_model import resnet34
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 # create model
 model = AlexNet(num_classes=5)
 # model = resnet34(num_classes=5)
@@ -40,4 +39,3 @@ for key in weights_keys:
     plt.hist(weight_vec, bins=50)
     plt.title(key)
     plt.show()
-

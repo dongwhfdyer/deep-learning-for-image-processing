@@ -1,6 +1,5 @@
 import requests
 
-
 download_links = {
     "regnetx_200mf": 'https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-regnet/regnetx_002-e7e85e5c.pth',
     "regnetx_400mf": 'https://github.com/rwightman/pytorch-image-models/releases/download/v0.1-regnet/regnetx_004-7d0e9424.pth',

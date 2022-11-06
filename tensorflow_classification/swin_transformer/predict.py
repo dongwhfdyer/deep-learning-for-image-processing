@@ -43,7 +43,7 @@ def main():
     model.build([1, im_height, im_width, 3])
 
     weights_path = './save_weights/model.ckpt'
-    assert len(glob.glob(weights_path+"*")), "cannot find {}".format(weights_path)
+    assert len(glob.glob(weights_path + "*")), "cannot find {}".format(weights_path)
     model.load_weights(weights_path)
 
     result = np.squeeze(model.predict(img, batch_size=1))

@@ -71,7 +71,7 @@ def train_one_epoch(model, optimizer, data_loader, epoch):
     model.train()
     loss_function = torch.nn.CrossEntropyLoss()
     accu_loss = torch.zeros(1).cuda()  # 累计损失
-    accu_num = torch.zeros(1).cuda()   # 累计预测正确的样本数
+    accu_num = torch.zeros(1).cuda()  # 累计预测正确的样本数
     optimizer.zero_grad()
 
     sample_num = 0
@@ -108,7 +108,7 @@ def evaluate(model, data_loader, epoch):
 
     model.eval()
 
-    accu_num = torch.zeros(1).cuda()   # 累计预测正确的样本数
+    accu_num = torch.zeros(1).cuda()  # 累计预测正确的样本数
     accu_loss = torch.zeros(1).cuda()  # 累计损失
 
     sample_num = 0

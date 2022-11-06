@@ -115,8 +115,8 @@ def generate_ds(data_root: str,
         ds = ds.cache()  # 读取数据后缓存至内存
         if shuffle:
             ds = ds.shuffle(buffer_size=shuffle_size)  # 打乱数据顺序
-        ds = ds.batch(batch_size)                      # 指定batch size
-        ds = ds.prefetch(buffer_size=AUTOTUNE)         # 在训练的同时提前准备下一个step的数据
+        ds = ds.batch(batch_size)  # 指定batch size
+        ds = ds.prefetch(buffer_size=AUTOTUNE)  # 在训练的同时提前准备下一个step的数据
         return ds
 
     train_ds = tf.data.Dataset.from_tensor_slices((tf.constant(train_img_path),

@@ -103,7 +103,7 @@ class BackboneWithFPN(nn.Module):
             in_channels_list=in_channels_list,
             out_channels=out_channels,
             extra_blocks=extra_blocks,
-            )
+        )
 
         self.out_channels = out_channels
 
@@ -128,6 +128,7 @@ class ExtraFPNBlock(nn.Module):
             of the FPN
         names (List[str]): the extended set of names for the results
     """
+
     def forward(self,
                 results: List[Tensor],
                 x: List[Tensor],
@@ -150,6 +151,7 @@ class LastLevelP6P7(ExtraFPNBlock):
     """
     This module is used in RetinaNet to generate extra layers, P6 and P7.
     """
+
     def __init__(self, in_channels: int, out_channels: int):
         super().__init__()
         self.p6 = nn.Conv2d(in_channels, out_channels, 3, 2, 1)

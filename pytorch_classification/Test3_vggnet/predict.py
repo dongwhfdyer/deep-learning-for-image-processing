@@ -33,7 +33,7 @@ def main():
 
     with open(json_path, "r") as f:
         class_indict = json.load(f)
-    
+
     # create model
     model = vgg(model_name="vgg16", num_classes=5).to(device)
     # load model weights

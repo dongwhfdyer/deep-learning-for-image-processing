@@ -72,7 +72,7 @@ def main():
     # model.build((batch_size, 224, 224, 3))  # when using subclass model
 
     pre_weights_path = './pretrain_weights.ckpt'
-    assert len(glob.glob(pre_weights_path+"*")), "cannot find {}".format(pre_weights_path)
+    assert len(glob.glob(pre_weights_path + "*")), "cannot find {}".format(pre_weights_path)
     model.load_weights(pre_weights_path)
     model.summary()
 

@@ -24,4 +24,3 @@ class ImageList(object):
         # type: (Device) -> ImageList # noqa
         cast_tensor = self.tensors.to(device)
         return ImageList(cast_tensor, self.image_sizes)
-

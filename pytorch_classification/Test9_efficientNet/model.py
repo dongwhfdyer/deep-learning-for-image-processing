@@ -50,6 +50,7 @@ class DropPath(nn.Module):
     Drop paths (Stochastic Depth) per sample  (when applied in main path of residual blocks).
     "Deep Networks with Stochastic Depth", https://arxiv.org/pdf/1603.09382.pdf
     """
+
     def __init__(self, drop_prob=None):
         super(DropPath, self).__init__()
         self.drop_prob = drop_prob
@@ -86,7 +87,7 @@ class ConvBNActivation(nn.Sequential):
 
 class SqueezeExcitation(nn.Module):
     def __init__(self,
-                 input_c: int,   # block input channel
+                 input_c: int,  # block input channel
                  expand_c: int,  # block expand channel
                  squeeze_factor: int = 4):
         super(SqueezeExcitation, self).__init__()
@@ -108,14 +109,14 @@ class SqueezeExcitation(nn.Module):
 class InvertedResidualConfig:
     # kernel_size, in_channel, out_channel, exp_ratio, strides, use_SE, drop_connect_rate
     def __init__(self,
-                 kernel: int,          # 3 or 5
+                 kernel: int,  # 3 or 5
                  input_c: int,
                  out_c: int,
                  expanded_ratio: int,  # 1 or 6
-                 stride: int,          # 1 or 2
-                 use_se: bool,         # True
+                 stride: int,  # 1 or 2
+                 use_se: bool,  # True
                  drop_rate: float,
-                 index: str,           # 1a, 2a, 2b, ...
+                 index: str,  # 1a, 2a, 2b, ...
                  width_coefficient: float):
         self.input_c = self.adjust_channels(input_c, width_coefficient)
         self.kernel = kernel

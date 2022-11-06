@@ -10,7 +10,7 @@ def train_one_epoch(model, optimizer, data_loader, device, epoch, use_amp=False,
     model.train()
     loss_function = torch.nn.CrossEntropyLoss()
     accu_loss = torch.zeros(1).to(device)  # 累计损失
-    accu_num = torch.zeros(1).to(device)   # 累计预测正确的样本数
+    accu_num = torch.zeros(1).to(device)  # 累计预测正确的样本数
     optimizer.zero_grad()
 
     lr_scheduler = None
@@ -98,9 +98,3 @@ def evaluate(model, data_loader, device):
     acc = sum_num.item() / num_samples
 
     return acc
-
-
-
-
-
-

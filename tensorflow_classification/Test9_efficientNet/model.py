@@ -3,7 +3,6 @@ from typing import Union
 
 from tensorflow.keras import layers, Model
 
-
 CONV_KERNEL_INITIALIZER = {
     'class_name': 'VarianceScaling',
     'config': {
